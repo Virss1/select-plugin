@@ -23,6 +23,18 @@ const getTemplate = (data = [], placeholder) => {
 export class Select {
   constructor(selector, options) {
     this.$el = document.querySelector(selector);
+  #render() {
+    const {placeholder, data} = this.options;
+    this.$el.classList.add('select');
+    this.$el.innerHTML = getTemplate(data, placeholder);
+  }
+
+  #setup() {
+    this.clickHandler = this.clickHandler.bind(this);
+    this.$el.addEventListener('click', this.clickHandler);
+    this.$arrow = this.$el.querySelector('[data-type="arrow"]');
+    this.$value = this.$el.querySelector('[data-type="value"]');
+  }
   }
 
   open() {
