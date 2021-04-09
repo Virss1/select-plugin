@@ -52,8 +52,8 @@ export class Select {
 
   clickHandler(event) {
     const { type } = event.target.dataset;
-    // ['input', 'arrow'].includes(type)
-    if (type === 'input') {
+
+    if (['input', 'value', 'arrow'].includes(type)) {
       this.toggle();
     } else if (type === "item") {
       const id = event.target.dataset.id;
