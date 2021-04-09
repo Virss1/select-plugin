@@ -23,6 +23,13 @@ const getTemplate = (data = [], placeholder) => {
 export class Select {
   constructor(selector, options) {
     this.$el = document.querySelector(selector);
+    this.options = options;
+    this.selectedId = null;
+
+    this.#render();
+    this.#setup();
+  }
+
   #render() {
     const {placeholder, data} = this.options;
     this.$el.classList.add('select');
