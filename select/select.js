@@ -42,6 +42,13 @@ export class Select {
     this.$arrow = this.$el.querySelector('[data-type="arrow"]');
     this.$value = this.$el.querySelector('[data-type="value"]');
   }
+  get isOpen() {
+    return this.$el.classList.contains('open');
+  }
+
+  get current() {
+    return this.options.data.find(item => item.id === this.selectedId);
+  }
   }
 
   open() {
