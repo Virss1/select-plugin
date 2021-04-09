@@ -42,6 +42,18 @@ export class Select {
     this.$arrow = this.$el.querySelector('[data-type="arrow"]');
     this.$value = this.$el.querySelector('[data-type="value"]');
   }
+
+  clickHandler(event) {
+    const { type } = event.target.dataset;
+    // ['input', 'arrow'].includes(type)
+    if (type === 'input') {
+      this.toggle();
+    } else if (type === 'item') {
+      const id = event.target.dataset.id;
+      this.select(id);
+    }
+  }
+
   get isOpen() {
     return this.$el.classList.contains('open');
   }
