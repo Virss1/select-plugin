@@ -61,6 +61,14 @@ export class Select {
   get current() {
     return this.options.data.find(item => item.id === this.selectedId);
   }
+
+  select(id) {
+    this.selectedId = id;
+    this.$value.textContent = this.current.value;
+  }
+  
+  toggle() {
+    this.isOpen ? this.close() : this.open();
   }
 
   open() {
