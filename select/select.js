@@ -1,9 +1,16 @@
-const getTemplate = (data = [], placeholder) => {
-  const text = placeholder ?? 'Placeholder по умолчанию';
+const getTemplate = (data = [], placeholder, selectedId) => {
+  let text = placeholder ?? "Placeholder по умолчанию";
+
+  const items = data.map((item) => {
+    let cls = '';
+    if (item.id === selectedId) {
+      text = item.value;
+      cls = 'selected';
+    }
 
   const items = data.map(item => {
     return `
-      <li class="select__item" data-type="item" data-id="${item.id}">${item.value}</li>
+      <li class="select__item ${cls}" data-type="item" data-id="${item.id}">${item.value}</li>
     `;
   });
   
@@ -24,16 +31,16 @@ export class Select {
   constructor(selector, options) {
     this.$el = document.querySelector(selector);
     this.options = options;
-    this.selectedId = null;
+    this.selectedId = options.selectedId;
 
     this.#render();
     this.#setup();
   }
 
   #render() {
-    const {placeholder, data} = this.options;
-    this.$el.classList.add('select');
-    this.$el.innerHTML = getTemplate(data, placeholder);
+    const { placeholder, data } = this.options;
+    this.$el.classList.add("select");
+    this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
   }
 
   #setup() {
