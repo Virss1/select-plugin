@@ -73,9 +73,17 @@ export class Select {
 
   open() {
     this.$el.classList.add('open');
+    this.$arrow.classList.remove('fa-chevron-down');
+    this.$arrow.classList.add('fa-chevron-up');
   }
 
   close() {
     this.$el.classList.remove('open');
+    this.$arrow.classList.remove('fa-chevron-up');
+    this.$arrow.classList.add('fa-chevron-down');
+  }
+
+  destroy() {
+    this.$el.removeEventListener('click', this.clickHandler);
   }
 }
