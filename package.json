@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "@babel/plugin-proposal-private-methods": "^7.13.0",
-    "@parcel/transformer-sass": "^2.0.0-beta3.1",
-    "gh-pages": "^3.2.1",
-    "parcel": "^2.0.0-nightly.722"
+    "@babel/plugin-proposal-private-methods": "latest",
+    "@parcel/transformer-sass": "latest",
+    "gh-pages": "latest",
+    "parcel": "latest"
   },
   "scripts": {
     "start": "parcel index.html",
